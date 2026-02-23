@@ -1,5 +1,6 @@
 import AboutPreview from '@/components/sections/AboutPreview';
 import Approach from '@/components/sections/Approach';
+import ContactCTA from '@/components/sections/ContactCTA';
 import Hero from '@/components/sections/Hero';
 import ServicesGrid from '@/components/sections/ServicesGrid';
 import TrustBar from '@/components/sections/TrustBar';
@@ -17,8 +18,7 @@ export default function Home() {
       <AboutPreview/>
       <ServicesGrid />
       <Approach/>
-      {/* We will build these sections next */}
-      {/* <CallToAction /> */}
+      <ContactCTA />
     </main>
   );
 }
