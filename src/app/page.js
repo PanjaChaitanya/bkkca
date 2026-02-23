@@ -1,4 +1,7 @@
+import AboutPreview from '@/components/sections/AboutPreview';
+import Approach from '@/components/sections/Approach';
 import Hero from '@/components/sections/Hero';
+import ServicesGrid from '@/components/sections/ServicesGrid';
 import TrustBar from '@/components/sections/TrustBar';
 
 export const metadata = {
@@ -11,11 +14,10 @@ export default function Home() {
     <main className="min-h-screen bg-slate-50">
       <Hero />
       <TrustBar />
-      
+      <AboutPreview/>
+      <ServicesGrid />
+      <Approach/>
       {/* We will build these sections next */}
-      {/* <AboutPreview /> */}
-      {/* <ServicesGrid /> */}
-      {/* <ApproachSection /> */}
       {/* <CallToAction /> */}
     </main>
   );
