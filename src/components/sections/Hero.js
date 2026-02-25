@@ -1,55 +1,134 @@
+'use client'; // Required for Framer Motion in Next.js
 import Link from 'next/link';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Globe, Shield, Zap, Menu } from 'lucide-react';
 
 export default function Hero() {
-  return (
-    <section className="relative bg-slate-900 text-white overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/carousel-3.jpg" // You can update this to a better hi-res image later
-          alt="Modern Business District"
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
-      </div>
+  // Animation Variants
+  const containerVars = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } }
+  };
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold text-blue-300 bg-blue-900/30 border border-blue-800/50 mb-6">
-            <span className="flex h-2 w-2 rounded-full bg-blue-500 mr-2"></span>
-            Established 2012 • Serving PAN India
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-            Precision in Finance.<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-yellow-500">
-              Excellence in Compliance.
-            </span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
-            From seamless tax planning to rigorous statutory audits, BKK & Associates handles the financial complexities so you can focus on scaling your business.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link 
-              href="/contact" 
-              className="inline-flex justify-center items-center px-8 py-4 text-base font-bold rounded-lg text-slate-900 bg-yellow-500 hover:bg-yellow-400 transition-all duration-200 shadow-lg hover:shadow-yellow-500/30"
-            >
-              Schedule a Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-            <Link 
-              href="/services" 
-              className="inline-flex justify-center items-center px-8 py-4 text-base font-semibold rounded-lg text-white bg-slate-800/50 border border-slate-700 hover:bg-slate-800 transition-all duration-200 backdrop-blur-sm"
-            >
-              Explore Our Services
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
+  const itemVars = {
+    initial: { y: 20, opacity: 0 },
+    animate: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+  };
+
+  return (
+    <div className="relative min-h-screen bg-[#08090a] flex flex-col lg:flex-row font-sans selection:bg-yellow-500 selection:text-black overflow-hidden">
+      
+      {/* 1. Left Vertical Brand Rail */}
+      <motion.aside 
+        initial={{ x: -100 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.8, ease: "circOut" }}
+        className="hidden lg:flex w-24 flex-col justify-between items-center py-12 border-r border-white/5 bg-[#050607]"
+      >
+        <div className="rotate-[-90deg] origin-center whitespace-nowrap">
+          <span className="text-xs tracking-[0.3em] font-bold text-slate-500 uppercase">
+            Established • 2012
+          </span>
         </div>
-      </div>
-    </section>
+        <div className="h-24 w-[1px] bg-gradient-to-b from-transparent via-slate-700 to-transparent"></div>
+        <div className="flex flex-col gap-8 text-slate-400">
+            <Link href="#" className="hover:text-white transition-colors"><Globe size={20} /></Link>
+            <Link href="#" className="hover:text-white transition-colors"><Shield size={20} /></Link>
+        </div>
+      </motion.aside>
+
+      {/* 2. Main Hero Content Area */}
+      <main className="flex-1 flex flex-col">
+        <nav className="lg:hidden p-6 flex justify-between items-center border-b border-white/5">
+          <span className="font-bold text-xl tracking-tighter text-white">BKK<span className="text-yellow-500">.</span></span>
+          <Menu className="text-white" />
+        </nav>
+
+        <section className="flex-1 grid lg:grid-cols-12 gap-0">
+          
+          {/* Text Content Section */}
+          <motion.div 
+            variants={containerVars}
+            initial="initial"
+            animate="animate"
+            className="lg:col-span-7 flex flex-col justify-center px-8 lg:px-20 py-20"
+          >
+            <motion.header variants={itemVars} className="mb-12">
+               <span className="text-yellow-500 font-mono text-sm tracking-widest uppercase mb-4 block">
+                // Financial Excellence
+               </span>
+               <h1 className="text-6xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter">
+                SMART <br /> 
+                <span className="text-outline-white text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }}>AUDIT.</span> <br />
+                PURE GROWTH.
+               </h1>
+            </motion.header>
+
+            <motion.div variants={itemVars} className="max-w-md">
+              <p className="text-slate-400 text-lg mb-10 leading-relaxed border-l-2 border-yellow-500 pl-6">
+                BKK & Associates redefines compliance through precision and technology. We don't just balance books; we build financial fortresses for PAN India enterprises.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact" className="px-10 py-5 bg-white text-black font-bold flex items-center justify-center hover:bg-yellow-500 transition-all duration-300 group">
+                  Get Started 
+                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                </Link>
+                <Link href="/services" className="px-10 py-5 border border-white/10 text-white font-medium hover:bg-white/5 transition-all text-center">
+                  Our Expertise
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Visual Section */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="lg:col-span-5 relative bg-[#0c0e12] border-l border-white/5 overflow-hidden group"
+          >
+            <div className="absolute inset-0 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
+               <img 
+                src="/architecture.png" 
+                alt="Architecture" 
+                className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+               />
+            </div>
+            
+            <div className="relative h-full flex flex-col justify-end p-8 lg:p-12 gap-4">
+               <motion.div 
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="bg-black/60 backdrop-blur-md p-6 border border-white/10 translate-x-12 hover:translate-x-0 transition-transform duration-500"
+               >
+                  <h4 className="text-yellow-500 font-bold mb-1">Direct Taxation</h4>
+                  <p className="text-xs text-slate-300">Strategic planning & advisory for corporate entities.</p>
+               </motion.div>
+               <motion.div 
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="bg-black/60 backdrop-blur-md p-6 border border-white/10 hover:-translate-x-4 transition-transform duration-500"
+               >
+                  <h4 className="text-blue-400 font-bold mb-1">GST Compliance</h4>
+                  <p className="text-xs text-slate-300">End-to-end management for seamless operations.</p>
+               </motion.div>
+            </div>
+
+            <motion.div 
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 1.5, type: "spring" }}
+              className="absolute top-0 right-0 bg-yellow-500 px-4 py-8 [writing-mode:vertical-lr] font-bold text-black tracking-widest uppercase text-xs"
+            >
+              Scroll to explore
+            </motion.div>
+          </motion.div>
+
+        </section>
+      </main>
+    </div>
   );
 }

@@ -12,10 +12,14 @@ export async function generateStaticParams() {
 
 // 2. Dynamic SEO Metadata
 export async function generateMetadata({ params }) {
-  const service = servicesData.find((s) => s.slug === params.slug);
-  
+  const { slug } = await params;   // ✅ THIS IS THE FIX
+
+  const service = servicesData.find((s) => s.slug === slug);
+
   if (!service) {
-    return { title: 'Service Not Found | BKK & Associates' };
+    return {
+      title: 'Service Not Found | BKK & Associates',
+    };
   }
 
   return {
@@ -28,11 +32,13 @@ export async function generateMetadata({ params }) {
 }
 
 // 3. The Page Component
-export default function ServiceDetail({ params }) {
-  const service = servicesData.find((s) => s.slug === params.slug);
+export default async function ServiceDetail({ params }) {
+  const { slug } = await params;   // ✅ important in newer Next
+
+  const service = servicesData.find((s) => s.slug === slug);
 
   if (!service) {
-    notFound(); // Triggers the Next.js 404 page if someone types a wrong URL
+    notFound();
   }
 
   const Icon = service.icon;
