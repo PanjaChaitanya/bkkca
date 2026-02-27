@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { servicesData } from '@/data/services';
 import { ChevronDown, Menu, X, Phone } from 'lucide-react';
@@ -7,6 +7,18 @@ import { ChevronDown, Menu, X, Phone } from 'lucide-react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   return (
     <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
@@ -69,16 +81,19 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-900 p-2">
-              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="relative z-[70] text-slate-900 p-2"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Sidebar */}
-      <div className={`lg:hidden fixed inset-0 z-40 bg-white transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="pt-24 pb-6 px-6 space-y-4">
+      <div className={`lg:hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur-lg transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="pt-24 pb-6 px-6 space-y-4 bg-white/90 backdrop-blur-md rounded-b-2xl">
           <Link href="/" onClick={() => setIsOpen(false)} className="block text-2xl font-bold text-slate-900 border-b border-slate-100 pb-4">Home</Link>
           <Link href="/about" onClick={() => setIsOpen(false)} className="block text-2xl font-bold text-slate-900 border-b border-slate-100 pb-4">About Us</Link>
           <div className="space-y-4">
