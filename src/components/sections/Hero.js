@@ -16,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#08090a] flex font-sans selection:bg-yellow-200 selection:text-black overflow-hidden">
+    <div className="relative min-h-screen bg-[#08090a] flex selection:bg-yellow-200 selection:text-black overflow-hidden">
       
       {/* 1. Left Vertical Brand Rail */}
       <motion.aside 

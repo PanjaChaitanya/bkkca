@@ -32,7 +32,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 group">
               <img src="/CA-India-Logo.png" alt="CA Logo" className="h-10 w-auto group-hover:scale-105 transition-transform" />
               <div className="flex flex-col">
-                <span className="font-bold text-lg md:text-xl text-slate-900 leading-none logoFont">BKK & ASSOCIATES</span>
+                <span className="font-bold text-lg md:text-2xl text-slate-900 leading-none logoFont">BKK & ASSOCIATES</span>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-blue-600 font-semibold mt-1">Chartered Accountants</span>
               </div>
             </Link>
