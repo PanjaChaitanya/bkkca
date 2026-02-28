@@ -1,24 +1,26 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { servicesData } from '@/data/services';
-import { ChevronDown, Menu, X, Phone } from 'lucide-react';
+import { servicesData } from '@/data/services'; // Ensure this path is correct
+import { ChevronDown, Menu, X, Phone, Home, Info, Briefcase } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
+  // Lock scroll when menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+    return () => { document.body.style.overflow = 'auto'; };
   }, [isOpen]);
+
+  const menuItems = [
+    { icon: <Home size={24} />, label: "Home", href: "/" },
+    { icon: <Info size={24} />, label: "About", href: "/about" },
+    { icon: <Briefcase size={24} />, label: "Services", href: "/services" },
+    { icon: <Phone size={24} />, label: "Contact", href: "/contact" },
+  ];
 
   return (
     <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
@@ -30,7 +32,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-3 group">
               <img src="/CA-India-Logo.png" alt="CA Logo" className="h-10 w-auto group-hover:scale-105 transition-transform" />
               <div className="flex flex-col">
-                <span className="font-bold text-lg md:text-xl text-slate-900 leading-none">BKK & ASSOCIATES</span>
+                <span className="font-bold text-lg md:text-xl text-slate-900 leading-none logoFont">BKK & ASSOCIATES</span>
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-blue-600 font-semibold mt-1">Chartered Accountants</span>
               </div>
             </Link>
@@ -38,52 +40,53 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">Home</Link>
-            <Link href="/about" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">About Us</Link>
-            
-            {/* Services Mega Menu Trigger */}
-            <div 
-              className="relative group h-full flex items-center"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <button className="flex items-center gap-1 text-slate-700 group-hover:text-blue-600 font-medium transition-colors">
-                Services
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
-              </button>
+            <div className="flex items-center gap-10">
+                <div className="flex gap-8 font-bold text-xs uppercase tracking-widest text-slate-700">
+                  <Link href="/" className="hover:text-blue-400 transition-colors">Home</Link>
+                  <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
+                  <Link href="/services" className="hover:text-blue-400 transition-colors">Expertise</Link>
+                  
+                  <div 
+                    className="relative group h-full flex items-center"
+                    onMouseEnter={() => setIsServicesOpen(true)}
+                    onMouseLeave={() => setIsServicesOpen(false)}
+                  >
+                    <button className="flex items-center hover:text-blue-400 uppercase transition-colors">
+                      Services <ChevronDown size={16} className="ml-1"/>
+                    </button>
 
-              {/* Mega Menu Dropdown */}
-              <div className={`absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white border border-slate-200 shadow-2xl rounded-2xl p-6 transition-all duration-300 ${isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
-                <div className="grid grid-cols-2 gap-6">
-                  {servicesData.map((service) => (
-                    <Link 
-                      key={service.slug} 
-                      href={`/services/${service.slug}`}
-                      className="group/item flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors"
-                    >
-                      <div className="p-2 bg-blue-50 text-blue-600 rounded-lg group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                        <service.icon className="w-5 h-5" />
+                    <div className={`absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white border border-slate-200 shadow-2xl rounded-2xl p-6 transition-all duration-300 ${isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                      <div className="grid grid-cols-2 gap-6">
+                        {servicesData?.map((service) => (
+                          <Link 
+                            key={service.slug} 
+                            href={`/services/${service.slug}`}
+                            className="group/item flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors"
+                          >
+                            <div className="p-2 bg-blue-50 text-blue-600 rounded-lg group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                              <service.icon className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <div className="text-sm font-bold text-slate-900 mb-1">{service.title}</div>
+                              <p className="text-xs text-slate-500 line-clamp-1">{service.shortDescription}</p>
+                            </div>
+                          </Link>
+                        ))}
                       </div>
-                      <div>
-                        <div className="text-sm font-bold text-slate-900 mb-1">{service.title}</div>
-                        <p className="text-xs text-slate-500 line-clamp-1">{service.shortDescription}</p>
-                      </div>
-                    </Link>
-                  ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <Link href="/contact" className="px-6 py-2 bg-yellow-500 text-slate-900 font-black text-xs uppercase tracking-widest rounded-full hover:bg-yellow-400 transition-all">
+                  Contact
+                </Link>
             </div>
-
-            <Link href="/contact" className="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">
-              Get in Touch
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="relative z-[70] text-slate-900 p-2"
+              className="relative z-[100] text-slate-900 p-2 bg-slate-100 rounded-full"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -91,22 +94,71 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Sidebar */}
-      <div className={`lg:hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur-lg transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="pt-24 pb-6 px-6 space-y-4 bg-white/90 backdrop-blur-md rounded-b-2xl">
-          <Link href="/" onClick={() => setIsOpen(false)} className="block text-2xl font-bold text-slate-900 border-b border-slate-100 pb-4">Home</Link>
-          <Link href="/about" onClick={() => setIsOpen(false)} className="block text-2xl font-bold text-slate-900 border-b border-slate-100 pb-4">About Us</Link>
-          <div className="space-y-4">
-            <span className="text-sm font-bold uppercase text-blue-600 tracking-widest">Our Services</span>
-            <div className="grid grid-cols-1 gap-4">
-              {servicesData.map((s) => (
-                <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setIsOpen(false)} className="text-lg text-slate-700">{s.title}</Link>
-              ))}
+      {/* Mobile Menu Overlay & Arc */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* 1. Full Body Blur Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-[60] bg-white/20 backdrop-blur-xl"
+            />
+
+            {/* 2. Radial Arc Menu */}
+            <div className="fixed top-10 right-10 z-[70]">
+              {menuItems.reverse().map((item, index) => {
+                // Calculation for a nice arc:
+                // We use angles from 90 (bottom) to 180 (left)
+                const totalItems = menuItems.length;
+                const startAngle = 90; 
+                const endAngle = 180;
+                const angle = startAngle + (index * (endAngle - startAngle) / (totalItems - 1));
+                const radius = 190; // How far out the icons go
+
+                const x = Math.cos(angle * (Math.PI / 160)) * radius;
+                const y = Math.sin(angle * (Math.PI / 175)) * radius;
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
+                    animate={{
+                      x: x,
+                      y: y,
+                      scale: 1,
+                      opacity: 1,
+                    }}
+                    exit={{ x: 0, y: 0, scale: 0, opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 20,
+                      delay: index * 0.05
+                    }}
+                    className="absolute"
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="group flex flex-col items-center gap-1"
+                    >
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-slate-800 text-blue-400 shadow-xl border border-blue-50 active:scale-90 transition-transform">
+                        {item.icon}
+                      </div>
+                      <span className="text-[10px] font-bold uppercase text-slate-800 bg-white/80 px-2 py-0.5 rounded-full">
+                        {item.label}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
-          </div>
-          <Link href="/contact" onClick={() => setIsOpen(false)} className="block w-full bg-blue-600 text-white text-center py-4 rounded-xl font-bold text-lg">Contact Us</Link>
-        </div>
-      </div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

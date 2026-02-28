@@ -1,161 +1,154 @@
 import Approach from '@/components/sections/Approach';
 import ContactCTA from '@/components/sections/ContactCTA';
-import { Target, Shield, TrendingUp, Building2, Factory, Monitor, Pill, Eye, Award, CheckCircle2 } from 'lucide-react';
+import { 
+  Target, Shield, TrendingUp, Building2, Factory, 
+  Monitor, Pill, Eye, Award, CheckCircle2, 
+  Briefcase, Scale, Globe, Users 
+} from 'lucide-react';
 
 export const metadata = {
-  title: 'About Us | BKK & Associates Chartered Accountants',
-  description: 'Established in 2012, BKK & Associates is a trusted team of Chartered Accountants helping businesses across India achieve compliance and unlock growth.',
+  title: 'About BKK & Associates | Premier Chartered Accountants in India',
+  description: 'Since 2012, BKK & Associates has provided expert Audit, Taxation, and GST consultancy. Discover how our team of CAs empowers businesses with financial integrity and strategic growth.',
+  // Add OpenGraph for better social sharing
+  openGraph: {
+    title: 'Expert Financial Advisory | BKK & Associates',
+    description: '12+ years of excellence in Chartered Accountancy and Business Consulting.',
+    images: ['/about-hero-og.jpg'],
+  }
 };
 
 export default function AboutPage() {
   const industries = [
-    { name: 'Real Estate', icon: Building2 },
+    { name: 'Real Estate & Infra', icon: Building2 },
     { name: 'Manufacturing', icon: Factory },
-    { name: 'IT Sector', icon: Monitor },
-    { name: 'Pharmaceuticals', icon: Pill },
-    { name: 'Food Processing', icon: Target },
-    { name: 'Textiles', icon: TrendingUp },
-    { name: 'Logistics & Transport', icon: Shield },
-    { name: 'Export Houses', icon: Building2 },
+    { name: 'IT & SaaS', icon: Monitor },
+    { name: 'Pharma & Healthcare', icon: Pill },
+    { name: 'FMCG & Food', icon: Target },
+    { name: 'Textiles & Retail', icon: TrendingUp },
+    { name: 'Logistics & Supply', icon: Shield },
+    { name: 'E-commerce & Export', icon: Globe },
+  ];
+
+  const valueProps = [
+    { title: "Integrity", desc: "Unwavering commitment to ethical financial practices.", icon: Scale },
+    { title: "Precision", desc: "Meticulous attention to detail in every audit and filing.", icon: Target },
+    { title: "Innovation", desc: "Modern solutions for complex regulatory landscapes.", icon: TrendingUp },
+    { title: "Client-Centric", desc: "Tailored strategies for startups to MNCs.", icon: Users },
   ];
 
   return (
     <main className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
-      <section className="relative bg-[#0a0c10] pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-        {/* Subtle Grid Pattern Background */}
-        <div className="absolute inset-0 z-0 opacity-10 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
-          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#444 1px, transparent 1px), linear-gradient(90deg, #444 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+      {/* Hero Section: Higher Contrast & Better Copy */}
+      <section className="relative bg-[#0a0c10] pt-32 pb-24 lg:pt-38 lg:pb-36 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
+          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#22d3ee 0.5px, transparent 0.5px), linear-gradient(90deg, #22d3ee 0.5px, transparent 0.5px)', backgroundSize: '60px 60px' }}></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-8">
-            <Shield size={14} />
-            <span>Since 2012</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col items-center text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-[0.1em] mb-10 animate-fade-in">
+              <Shield size={14} className="animate-pulse" />
+              <span>Trusted Financial Architects Since 2012</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-slate-400 mb-8 leading-[1.1]">
+              Precision in Numbers.<br />
+            <span className="text-outline-white text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }}>Vision in Strategy.</span> <br />
+            </h1>
+            <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-light">
+              BKK & Associates is a multi-disciplinary Chartered Accountancy firm redefining financial excellence through <span className="text-white font-medium">audit integrity</span> and <span className="text-white font-medium">strategic tax optimization</span>.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-light tracking-tight text-white mb-6 leading-tight">
-            Empowering Your Journey <br className="hidden md:block" />
-            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-yellow-500">
-              Toward Sustainable Growth
-            </span>
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed border-t border-slate-800 pt-8 mt-2">
-            More than just accountants—we are your strategic partners committed to excellence, financial integrity, and comprehensive business optimization.
-          </p>
         </div>
-        
-        {/* Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 blur-[120px] -z-10"></div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-20 lg:py-32 bg-white">
+      {/* Our Story: Focus on Authority */}
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left: The Narrative */}
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
               <div>
-                <h2 className="flex items-center gap-2 text-blue-600 font-bold tracking-widest uppercase text-sm mb-3">
-                  <Award size={18} />
-                  Our Firm's Legacy
-                </h2>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
-                  A Decade of Trust <br/>& Financial Excellence
+                <h2 className="text-blue-600 font-bold tracking-[0.15em] uppercase text-sm mb-4">The BKK Standard</h2>
+                <h3 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+                  Navigating Complexity <br/>With Confidence.
                 </h3>
               </div>
               
-              <div className="prose prose-lg text-slate-600">
+              <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
                 <p>
-                  At <strong>BKK & Associates</strong>, we are a forward-thinking team of Chartered Accountants dedicated to providing comprehensive financial and business advisory services. Since our establishment, we have been helping businesses across industries achieve compliance, optimize performance, and unlock growth.
+                  Founded with a vision to bridge the gap between complex regulatory requirements and business agility, <strong>BKK & Associates</strong> has evolved into a premier financial powerhouse.
                 </p>
                 <p>
-                  Our expertise spans across various domains, including ensuring financial integrity through statutory and specialized audits, delivering robust solutions for income tax, GST, transfer pricing, and international taxation. We actively assist with company formation, mergers & acquisitions, IPOs, and regulatory compliance.
+                  We don't just report numbers; we interpret them to safeguard your assets and catalyze growth. Our multi-city presence allows us to serve as a local partner with a global perspective on <strong>International Taxation, GST Laws, and Corporate Governance.</strong>
                 </p>
-                <ul className="space-y-3 mt-6">
-                  {['Strategic Financial Planning', 'Rigorous Budgeting & Auditing', 'Tailored Management System Design', 'End-to-end Compliance'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="font-medium text-slate-700">{item}</span>
-                    </li>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                  {['FEMA & RBI Compliance', 'Statutory & Internal Audit', 'Mergers & Acquisitions', 'Direct & Indirect Tax'].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                      <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                      <span className="font-semibold text-slate-800 text-sm">{item}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
 
-            {/* Right: Visual / Stat Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
-              <div className="absolute inset-0 bg-blue-50/50 rounded-3xl transform scale-105 -z-10"></div>
-              
-              <div className="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col justify-center items-center text-center transform hover:-translate-y-2 transition-all duration-300 relative group overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
-                <Target className="w-12 h-12 text-blue-600 mb-4" />
-                <h4 className="text-5xl font-extrabold text-slate-900 mb-2">12+</h4>
-                <p className="text-slate-500 font-semibold uppercase tracking-wider text-sm">Years of Excellence</p>
-              </div>
-              
-              <div className="bg-[#0a0c10] p-8 rounded-2xl shadow-xl flex flex-col justify-center items-center text-center transform hover:-translate-y-2 transition-all duration-300 sm:translate-y-12 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <Shield className="w-12 h-12 text-yellow-500 mb-4 relative z-10" />
-                <h4 className="text-5xl font-extrabold text-white mb-2 relative z-10">3</h4>
-                <p className="text-slate-400 font-semibold uppercase tracking-wider text-sm relative z-10">Strategic Locations</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="py-20 lg:py-28 bg-slate-50 relative border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Vision Card */}
-            <div className="bg-white rounded-3xl p-10 shadow-sm border border-slate-100 transform hover:shadow-xl transition-all duration-300 group">
-              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-300">
-                <Eye className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" />
-              </div>
-              <h3 className="text-3xl font-extrabold text-slate-900 mb-4">Our Vision</h3>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                To be the most trusted and globally recognized financial advisory firm, empowering businesses to thrive in dynamic economic landscapes through unparalleled precision and innovative financial solutions.
-              </p>
-            </div>
-
-            {/* Mission Card */}
-            <div className="bg-slate-900 rounded-3xl p-10 shadow-xl transform hover:shadow-2xl hover:shadow-blue-900/20 transition-all duration-300 group relative overflow-hidden">
-               <div className="absolute inset-0 bg-[url('/pattern-bg.svg')] opacity-5"></div>
-              <div className="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-yellow-500 transition-all duration-300 relative z-10">
-                <Target className="w-8 h-8 text-yellow-500 group-hover:text-slate-900 transition-colors" />
-              </div>
-              <h3 className="text-3xl font-extrabold text-white mb-4 relative z-10">Our Mission</h3>
-              <p className="text-lg text-slate-400 leading-relaxed relative z-10">
-                To deliver comprehensive, timely, and insight-driven financial services that ensure regulatory compliance and facilitate sustainable growth for every client, regardless of their scale.
-              </p>
+            {/* Right: Modernized Stat Grid */}
+            <div className="relative overflow-hidden">
+               <div className="absolute -inset-4 bg-gradient-to-tr from-blue-100 to-cyan-50 rounded-[2rem] -rotate-2 -z-10"></div>
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="bg-white p-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-slate-100 text-center">
+                  <Briefcase className="w-10 h-10 text-blue-600 mx-auto mb-6" />
+                  <div className="text-5xl font-bold text-slate-900 mb-2">500+</div>
+                  <div className="text-slate-500 text-xs uppercase font-bold tracking-widest">Corporate Clients</div>
+                </div>
+                <div className="bg-slate-900 p-10 rounded-2xl shadow-xl text-center sm:translate-y-12">
+                  <Award className="w-10 h-10 text-yellow-500 mx-auto mb-6" />
+                  <div className="text-5xl font-bold text-white mb-2">12+</div>
+                  <div className="text-slate-400 text-xs uppercase font-bold tracking-widest">Years Legacy</div>
+                </div>
+               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Industries Served Section */}
-      <section className="py-20 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3">Sectors We Empower</h2>
-            <h3 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">Industries We Serve</h3>
-            <p className="text-lg text-slate-600">
-              Our experience spans collaborating with government bodies, ambitious private enterprises, and multinational corporations across diverse, dynamic sectors.
+      {/* Core Values Section (New!) - Crucial for "Best" status */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">The Pillars of Our Practice</h2>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+          {valueProps.map((prop, i) => (
+            <div key={i} className="bg-white p-8 rounded-xl border border-slate-200 hover:border-blue-500 transition-colors group">
+              <prop.icon className="w-8 h-8 text-slate-400 group-hover:text-blue-600 mb-6 transition-colors" />
+              <h4 className="text-xl font-bold text-slate-900 mb-3">{prop.title}</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">{prop.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Industries: Using a 'Masonry-ish' or cleaner grid */}
+      <section className="py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-3">Expertise Across Frontiers</h2>
+              <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">Industry-Specific Solutions.</h3>
+            </div>
+            <p className="text-slate-500 max-w-sm mb-2">
+              Deep domain knowledge allows us to address the unique tax and compliance challenges of every sector.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {industries.map((industry, idx) => {
               const Icon = industry.icon;
               return (
-                <div key={idx} className="flex flex-col items-center p-8 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-300 group cursor-default">
-                  <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-500 group-hover:text-blue-600 group-hover:bg-blue-50 group-hover:scale-110 transition-all duration-300 mb-6">
-                    <Icon className="w-8 h-8" />
+                <div key={idx} className="group flex flex-col p-8 bg-gray-100 border border-slate-100 rounded-3xl hover:bg-slate-900 active:bg-slate-900 transition-all duration-500">
+                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-slate-600 group-hover:bg-blue-500 group-hover:text-white group-active:bg-blue-500 group-active:text-white transition-all duration-500 mb-8">
+                    <Icon className="w-6 h-6" />
                   </div>
-                  <h4 className="font-bold text-slate-800 text-center tracking-tight">{industry.name}</h4>
+                  <h4 className="font-bold text-slate-800 group-hover:text-white group-active:text-white text-lg tracking-tight transition-colors">{industry.name}</h4>
                 </div>
               );
             })}
@@ -163,7 +156,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Reusing existing components for consistency and conversion */}
       {/* <Approach />
       <ContactCTA /> */}
     </main>

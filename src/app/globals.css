@@ -25,6 +25,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@font-face {
+  font-family: "Hexco";
+  src: url("/fonts/Hexco.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logoFont {
+  font-family: "Hexco", sans-serif;
+}
+
 @keyframes shimmerSlow {
   0% {
     background-position: 100% 0;
@@ -38,8 +49,8 @@ body {
   animation: shimmerSlow 8s ease-in-out forwards;
 }
 .animate-delay-1 {
-  animation-delay: 2s;
+  animation-delay: 1.5s;
 }
 .animate-delay-2 {
-  animation-delay: 4.5s;
+  animation-delay: 3.5s;
 }

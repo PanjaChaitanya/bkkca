@@ -101,7 +101,7 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="px-10 py-5 bg-white text-black font-bold flex items-center justify-center hover:bg-yellow-500 active:bg-yellow-500 transition-all duration-300 group">
                   Get Started 
-                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  <ArrowRight className="ml-2 group-hover:translate-x-2 group-active:translate-x-2 transition-transform" />
                 </Link>
                 <Link href="/services" className="px-10 py-5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-2 active:bg-white/10 active:border-2 transition-all text-center">
                   Our Expertise
@@ -117,11 +117,11 @@ export default function Hero() {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="lg:col-span-5 relative bg-[#0c0e12] border-l border-white/5 overflow-hidden group"
           >
-            <div className="absolute inset-0 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
+            <div className="absolute inset-0 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-60 group-active:grayscale-0 group-active:opacity-60 transition-all duration-1000">
                <img 
                 src="/architecture.png" 
                 alt="Architecture" 
-                className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+                className="w-full h-full object-cover scale-110 group-hover:scale-100 group-active:scale-100 transition-transform duration-500"
                />
             </div>
             
@@ -130,7 +130,7 @@ export default function Hero() {
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.8 }}
-                className="bg-black/60 backdrop-blur-md p-6 border border-white/10 translate-x-12 hover:translate-x-0 transition-transform duration-500"
+                className="bg-black/60 backdrop-blur-md p-6 border border-white/10 translate-x-12 hover:translate-x-0 active:translate-x-0 transition-transform duration-500"
                >
                   <h4 className="text-yellow-500 font-bold mb-1">Direct Taxation</h4>
                   <p className="text-xs text-slate-300">Strategic planning & advisory for corporate entities.</p>
@@ -139,7 +139,7 @@ export default function Hero() {
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
-                className="bg-black/60 backdrop-blur-md p-6 border border-white/10 hover:-translate-x-4 transition-transform duration-500"
+                className="bg-black/60 backdrop-blur-md p-6 border border-white/10 hover:-translate-x-4 active:-translate-x-4 transition-transform duration-500"
                >
                   <h4 className="text-blue-400 font-bold mb-1">GST Compliance</h4>
                   <p className="text-xs text-slate-300">End-to-end management for seamless operations.</p>
