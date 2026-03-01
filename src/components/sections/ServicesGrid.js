@@ -49,7 +49,7 @@ export default function ServicesGrid() {
                     {service.features.slice(0, 3).map((feature, idx) => (
                       <li key={idx} className="flex items-start text-sm text-slate-500">
                         <span className="text-blue-500 mr-2">•</span>
-                        {feature}
+                        {feature.title}
                       </li>
                     ))}
                   </ul>

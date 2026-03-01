@@ -61,14 +61,14 @@ export default function Navbar() {
                           <Link 
                             key={service.slug} 
                             href={`/services/${service.slug}`}
-                            className="group/item flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors"
+                            className="group/item flex items-start gap-4 p-2 rounded-xl hover:bg-slate-50 transition-colors"
                           >
                             <div className="p-2 bg-blue-50 text-blue-600 rounded-lg group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
                               <service.icon className="w-5 h-5" />
                             </div>
                             <div>
-                              <div className="text-sm font-bold text-slate-900 mb-1">{service.title}</div>
-                              <p className="text-xs text-slate-500 line-clamp-1">{service.shortDescription}</p>
+                              <div className="text-xs font-bold text-slate-900 mb-1">{service.title}</div>
+                              <p className="text-[10px] text-slate-500 line-clamp-1">{service.shortDescription}</p>
                             </div>
                           </Link>
                         ))}
